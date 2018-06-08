@@ -1,0 +1,53 @@
+#include<iostream>
+const int arraysize=4;
+int answer=1597;
+void separate(int num,int array[],int times);
+int gotarray[arraysize];
+int answerarray[arraysize];
+int main(){
+	using namespace std;
+	//compelete answerarray[4]
+	separate(answer,answerarray,arraysize);
+    //get the number
+	cout<<"Welcome to Alan Tao's guess number game!'"<<endl;
+	cout<<"Input your first number\n";
+    int gotnumber;  
+	cin>>gotnumber;
+	//complete answerarray[4]
+	separate(gotnumber,gotarray,arraysize);
+	//counting how many A and B are there
+	int j=2; //count how many times have you guess
+	while(1){
+		int A,B;
+		A=B=0;
+		for(int i=0;i<arraysize;i++){
+		    for(int j=0;j<arraysize;j++){
+			   if(gotarray[i]==answerarray[j]){
+				  if(i==j)
+				    A++;
+				  else if(i!=j)
+				    B++;
+		        }
+		    }
+	    }
+	    cout<<"The result is "<<A<<"A"<<B<<"B"<<endl;	
+	    if(A==arraysize)
+		  break;
+	    else{
+	    	cout<<"Alan Tao: Wrong answer, please input again!\n";
+	    	cout<<"This is your "<<j<<" times!!\n";
+	    	j++;
+	    	cin>>gotnumber;
+	    	separate(gotnumber,gotarray,arraysize);
+		}
+	}
+	cout<<"Alan Tao: congraduation!! You are as smart as I am";
+	return 0;
+}
+void separate(int num,int array[],int times){
+	array[times-1]=num%10;
+	times--;
+	if(times==0)
+	return;
+	separate(num/10,array,times);
+}
