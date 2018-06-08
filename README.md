@@ -1,4 +1,3 @@
 This is for test
 =============
-<br />
-use for test
+<br />I haven't learn "Markdown" yet.
