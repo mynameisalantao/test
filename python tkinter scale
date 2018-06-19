@@ -1,0 +1,30 @@
+import tkinter as tk
+window=tk.Tk()
+window.title("Alan's window")
+window.geometry('800x800')
+
+var=tk.StringVar()
+
+l=tk.Label(window,bg='yellow',width=200,text=var)
+l.pack()
+
+def print_selection(v):
+    l.config(text='You have selected'+v)
+
+
+
+#製作尺度scale s    其中from為從哪開始,to為到哪裏
+s=tk.Scale(window,label='try me',from_=5,to=11,
+           #orientation方向,length 多少像素(pixel)的長度
+           orient=tk.HORIZONTAL,length=200,
+           #會顯示出目前像素,此處先不顯示  0為False
+           showvalue=1,
+           #暫時沒有用到variable
+           #標出每個單位的長度
+           tickinterval=3,
+           #要保留幾位小數 整數1 小數第一位0.1 小數第二位0.01
+           resolution=0.01,
+           #當拖曳尺度時會有當前的標籤值傳給print_selection函數
+           command=print_selection)
+s.pack()
+window.mainloop()
