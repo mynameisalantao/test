@@ -1,0 +1,39 @@
+#首先載入tkinter模塊 並用tk來代表他
+import tkinter as tk
+#建立一個窗口為tk的物件TK 指定給window
+window=tk.Tk()
+#為窗口命名
+window.title("Alan's window")
+#設計窗口的大小 長x寬
+window.geometry('500x100')
+#定義類別tk中特定的字串物件
+var=tk.StringVar()
+#定義label (在哪個窗口上面顯示此label,要給什麼文字,背景顏色,字型(字體,大小),label寬,label長)
+l=tk.Label(window,textvariable=var,bg='blue',font=('Arial,12'),width=15,height=2)
+#為label l 安排位置 要安置在哪裏 pack放在上下左右
+l.pack()
+#定義全局變數 表示有無點到按鈕
+on_hit=False
+
+#先定義好函數hit_me 如果點擊了button b 就會執行此函數
+def hit_me():
+    #欲使用全域變數的宣告
+    global on_hit
+    if on_hit==False:
+        #若前一次為執行False敘述 下一次應該要執行True的敘述
+        on_hit=True
+        var.set('you hit me')
+    else:
+        #若前一次為執行True敘述 下一次應該要執行False的敘述
+        on_hit=False
+        var.set('')
+    
+
+#添加buttom(在哪個窗口上面顯示此buttom,要給什麼文字,buttom寬,buttom高,點擊此button時讓他執行執行函數hit_me)
+b=tk.Button(window,text='hit me',width=15,height=2,command=hit_me)
+#為button b 安排位置
+b.pack()
+
+
+#window會使主程式不斷刷新 否則只能執行一次
+window.mainloop()
