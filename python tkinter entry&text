@@ -1,0 +1,37 @@
+#Entry主要用來作為輸入口 而 Text主要用來輸出文字
+import tkinter as tk
+window=tk.Tk()
+window.title("Alan's window")
+window.geometry('200x200')
+
+#定義輸入口entry(在哪個窗口上面顯示此entry,如果是要輸入密碼 可改show='*')
+e=tk.Entry(window,show=None)
+e.pack()
+
+#定義函數insert_point
+def insert_point():
+    #將entry e接收到的值指定給var變數
+    var=e.get()
+    #將變數var的值傳給text t 使用insert的形式 即是將var放到鼠標所指處
+    #也可以把物件函數t.insert的引述insert改成索引位置(,) 即可指定要插入的位置
+    t.insert('insert',var)
+    
+#定義函數insert_end
+def insert_end():
+    var=e.get()
+    #將變數var的值傳給text t 使用end的形式 即是將var放到最後的位置
+    t.insert('end',var)
+
+    
+    
+#定義第一個button
+b1=tk.Button(window,text='insert point',width=15,height=2,command=insert_point)
+b1.pack()
+
+#定義第二個button
+b2=tk.Button(window,text='insert end',command=insert_end)
+b2.pack()
+
+#定義文本text(在哪個窗口上面顯示此text,高度)
+t=tk.Text(window,height=2)
+t.pack()
